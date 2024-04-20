@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+    stages{
+        stage('kubernates integeration'){
+            steps{
+                sh 'aws eks update-kubeconfig --region ap-south-1 --name jawan'
+                sh 'kubectl run my-pod --image nginx'
+                sh 'kubectl get po'
+            }
+        }
+    }
+}
